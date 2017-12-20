@@ -5,7 +5,9 @@ const homeContainerStyle = style({
   backgroundColor: 'blue'
 });
 
-const HomeContainer = () => {
+interface Props { }
+
+const HomeContainer: React.SFC<Props> = (props: Props) => {
   return (
     <section className={homeContainerStyle}>
       <h2>HOME</h2>
