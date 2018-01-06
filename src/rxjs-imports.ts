@@ -1,5 +1,4 @@
-// observable
-import 'rxjs/add/observable/ofType';
+// tslint:disable:no-import-side-effect
 
 import 'rxjs/add/operator/concat';
 import 'rxjs/add/operator/distinctUntilChanged';
@@ -17,6 +16,7 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/toArray';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/withLatestFrom';
+import 'rxjs/add/operator/take';
 
 import 'rxjs/add/observable/of';
 import 'rxjs/add/observable/from';
@@ -24,3 +24,4 @@ import 'rxjs/add/observable/concat';
 import 'rxjs/add/observable/forkJoin';
 import 'rxjs/add/observable/combineLatest';
 import 'rxjs/add/observable/timer';
+import 'rxjs/add/observable/interval';

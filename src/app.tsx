@@ -6,9 +6,12 @@ import { Router } from 'react-router';
 
 import { RootState } from './redux';
 import { AppRouter } from './app-router';
-import { appActionCreators } from './redux/app';
+import { actions } from './redux/app';
 
 import { History } from 'history';
+
+// "rxjs" imports
+import './rxjs-imports';
 
 interface Props {
   store: Store<RootState>;
@@ -19,7 +22,7 @@ export class App extends React.Component<Props, {}> {
 
   componentDidMount() {
     const { store } = this.props;
-    store.dispatch(appActionCreators.appStarted());
+    store.dispatch(actions.appStarted());
   }
 
   render() {

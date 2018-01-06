@@ -1,41 +1,20 @@
-import {
-  APP_STARTED,
-  LOAD_APP_DATA_REQUEST,
-  LOAD_APP_DATA_SUCCESS,
-  LOAD_APP_DATA_ERROR,
-} from './types';
+import { createAction } from 'typesafe-actions';
 
-export type Actions = {
-  APP_STARTED: {
-    type: typeof APP_STARTED,
-  },
-  LOAD_APP_DATA_REQUEST: {
-    type: typeof LOAD_APP_DATA_REQUEST,
-  },
-  LOAD_APP_DATA_SUCCESS: {
-    type: typeof LOAD_APP_DATA_SUCCESS,
-    payload: string,
-  },
-  LOAD_APP_DATA_ERROR: {
-    type: typeof LOAD_APP_DATA_ERROR,
-    payload: string,
-  }
-};
+const APP_STARTED = '@app/APP_STARTED';
+const LOAD_APP_DATA_REQUEST = '@app/LOAD_APP_DATA_REQUEST';
+const LOAD_APP_DATA_SUCCESS = '@app/LOAD_APP_DATA_SUCCESS';
+const LOAD_APP_DATA_ERROR = '@app/LOAD_APP_DATA_ERROR';
 
 // Action Creators
-export const appActionCreators = {
-  appStarted: (): Actions[typeof APP_STARTED] => ({
-    type: APP_STARTED,
-  }),
-  loadAppDataRequest: (): Actions[typeof LOAD_APP_DATA_REQUEST] => ({
-    type: LOAD_APP_DATA_REQUEST,
-  }),
-  loadAppDataSuccess: (payload: string): Actions[typeof LOAD_APP_DATA_SUCCESS] => ({
+export const actions = {
+  appStarted: createAction(APP_STARTED),
+  loadAppDataRequest: createAction(LOAD_APP_DATA_REQUEST),
+  loadAppDataSuccess: createAction(LOAD_APP_DATA_SUCCESS, (payload: string) => ({
     type: LOAD_APP_DATA_SUCCESS,
     payload,
-  }),
-  loadAppDataError: (payload: string): Actions[typeof LOAD_APP_DATA_ERROR] => ({
+  })),
+  loadAppDataError: createAction(LOAD_APP_DATA_ERROR, (payload: string) => ({
     type: LOAD_APP_DATA_ERROR,
     payload,
-  }),
+  })),
 };

@@ -5,7 +5,7 @@ import { Dispatch, bindActionCreators } from 'redux';
 import { returntypeof } from 'react-redux-typescript';
 
 import { RootState, RootAction } from 'src/redux';
-import { appActionCreators } from '../../redux/app';
+import { actions } from '../../redux/app';
 
 const headerContainerStyle = style({
   backgroundColor: 'red'
@@ -17,7 +17,7 @@ const mapStateToProps = (state: RootState) => ({
 });
 
 const mapDispatchToProps = (dispatch: Dispatch<RootAction>) => bindActionCreators({
-  loadAppData: appActionCreators.loadAppDataRequest
+  loadAppData: actions.loadAppDataRequest
 }, dispatch);
 
 const stateProps = returntypeof(mapStateToProps);

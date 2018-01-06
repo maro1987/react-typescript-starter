@@ -1,11 +1,7 @@
 import { combineReducers, Reducer } from 'redux';
+import { getType } from 'typesafe-actions';
 
-import {
-  APP_STARTED,
-  LOAD_APP_DATA_REQUEST,
-  LOAD_APP_DATA_SUCCESS,
-  LOAD_APP_DATA_ERROR,
-} from './types';
+import { actions } from './';
 
 export type State = {
   readonly appStarted: boolean,
@@ -16,7 +12,7 @@ export type State = {
 const appStarted: Reducer<State['appStarted']> =
   (state = false, action) => {
     switch (action.type) {
-      case APP_STARTED:
+      case getType(actions.appStarted):
         return true;
 
       default:
@@ -27,7 +23,7 @@ const appStarted: Reducer<State['appStarted']> =
 const appData: Reducer<State['appData']> =
   (state = '', action) => {
     switch (action.type) {
-      case LOAD_APP_DATA_SUCCESS:
+      case getType(actions.loadAppDataSuccess):
         return action.payload;
 
       default:
@@ -38,10 +34,10 @@ const appData: Reducer<State['appData']> =
 const error: Reducer<State['error']> =
   (state = null, action) => {
     switch (action.type) {
-      case LOAD_APP_DATA_ERROR:
+      case getType(actions.loadAppDataError):
         return action.payload;
 
-      case LOAD_APP_DATA_REQUEST:
+      case getType(actions.loadAppDataRequest):
         return null;
 
       default:
